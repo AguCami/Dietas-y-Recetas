@@ -8,6 +8,7 @@ import { nombreEnFrase } from '../datos/ingredientes'
 import { coincide } from '../dominio/texto'
 import { useDatos } from '../estado/contexto'
 import { BarraCobertura, Pildora, SelloAptitud, Tarjeta, Vacio } from '../componentes/ui'
+import { Portada } from '../componentes/Portada'
 
 export function Recetas({ onAbrir }: { onAbrir: (id: string) => void }) {
   const { idsDespensa, perfil, favoritos, alternarFavorito } = useDatos()
@@ -130,15 +131,20 @@ function TarjetaReceta({
   return (
     <Tarjeta className="overflow-hidden">
       <div className="flex items-start gap-3 p-4">
-        <button type="button" onClick={onAbrir} className="flex-1 text-left">
-          <div className="flex flex-wrap items-center gap-2">
+        <button type="button" onClick={onAbrir} className="flex flex-1 items-start gap-3 text-left">
+          <Portada receta={ev.receta} className="h-16 w-16 shrink-0 rounded-2xl" tamanoEmoji="text-2xl" />
+          <span className="min-w-0 flex-1">
             <h3 className="font-titulo text-xl leading-tight text-tinta">{ev.receta.nombre}</h3>
-            <SelloAptitud aptitud={ev.aptitud} />
-          </div>
-          <p className="mt-1 text-sm text-tinta-suave">{ev.receta.descripcion}</p>
-          <p className="mt-2 text-xs text-tinta-suave">
-            ⏱ {ev.receta.minutos} min · 🍽 {ev.receta.porciones} porciones
-          </p>
+            {/* La descripción se corta en dos renglones: si no, con la
+                miniatura al lado las tarjetas se vuelven larguísimas. */}
+            <span className="mt-1 line-clamp-2 text-sm text-tinta-suave">{ev.receta.descripcion}</span>
+            {/* El sello va acá abajo y no al lado del título: ahí obligaba al
+                nombre a partirse en dos renglones. */}
+            <span className="mt-2 flex flex-wrap items-center gap-2 text-xs text-tinta-suave">
+              {ev.aptitud !== 'apta' && <SelloAptitud aptitud={ev.aptitud} />}
+              <span>⏱ {ev.receta.minutos} min · 🍽 {ev.receta.porciones} porciones</span>
+            </span>
+          </span>
         </button>
         <button
           type="button"

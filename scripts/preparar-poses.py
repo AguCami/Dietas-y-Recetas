@@ -26,7 +26,8 @@ from PIL import Image
 ORIGEN = 'disenio/poses'
 DESTINO = 'public/llamachef'
 ALTO_OBJETIVO = 512     # la app la muestra a ~140 px; 512 cubre pantallas 3x
-LADO_CARA = 224         # recorte de cabeza para el encabezado
+LADO_CARA = 224         # recorte de cabeza para el encabezado, en píxeles
+ALTO_CARA = 0.55        # qué parte del cuerpo entra en ese recorte, de arriba hacia abajo
 CALIDAD = 88            # probado contra el original: sin diferencia visible
 UMBRAL_ALFA = 10        # por debajo de esto el generador deja neblina de fondo
 
@@ -86,32 +87,32 @@ def generar_cara(imagenes: dict, caja: tuple) -> int:
     """
     Recorte de cabeza para el encabezado.
 
-    De cuerpo entero a 36 px la cabeza queda de unos 10 px y no se entiende
-    nada; con este recorte se leen el gorro y la cara.
+    De cuerpo entero a 36 px la cara queda de unos 10 px y no se entiende nada.
+
+    El corte de abajo es un número fijo (`ALTO_CARA`) y no algo detectado: esta
+    llama no tiene cuello, la cabeza sale directo del cuerpo, así que no hay
+    ningún punto donde la silueta se angoste para encontrarlo solo. Con 0.55
+    entra la sonrisa completa; con menos, queda cortada en la boca.
     """
     if 'reposo' not in imagenes:
         print('  (sin reposo.png, no genero la cara)')
         return 0
 
     cuerpo = imagenes['reposo'].crop(caja)
+    ancho, alto = cuerpo.size
 
-    # La cabeza vive en el tercio superior. Se mide su ancho real en esas filas
-    # en lugar de fijarlo a mano, así sigue andando si cambia la ilustración.
-    franja = cuerpo.crop((0, 0, cuerpo.width, int(cuerpo.height * 0.42)))
-    b = franja.getbbox()
-    if not b:
+    # El centro horizontal sí se mide: se toma del tercio de arriba, donde solo
+    # hay cabeza, para que no lo corran los brazos.
+    arriba = cuerpo.crop((0, 0, ancho, int(alto * 0.40))).getbbox()
+    if not arriba:
         return 0
+    centro_x = (arriba[0] + arriba[2]) // 2
 
-    centro_x, centro_y = (b[0] + b[2]) // 2, (b[1] + b[3]) // 2
-    lado = max(b[2] - b[0], b[3] - b[1]) // 2 + 12
-    cara = cuerpo.crop((centro_x - lado, max(0, centro_y - lado), centro_x + lado, centro_y + lado))
+    lado = int(alto * ALTO_CARA)
+    izquierda = max(0, min(centro_x - lado // 2, ancho - lado))
+    cara = cuerpo.crop((izquierda, 0, izquierda + lado, lado))
 
-    cuadrado = Image.new('RGBA', (max(cara.size),) * 2, (0, 0, 0, 0))
-    cuadrado.alpha_composite(
-        cara,
-        ((cuadrado.width - cara.width) // 2, (cuadrado.height - cara.height) // 2),
-    )
-    kb = guardar(cuadrado.resize((LADO_CARA, LADO_CARA), Image.LANCZOS), 'cara')
+    kb = guardar(cara.resize((LADO_CARA, LADO_CARA), Image.LANCZOS), 'cara')
     print(f'  {"cara.webp":18}          {kb:3} KB')
     return kb
 

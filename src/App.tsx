@@ -43,9 +43,11 @@ function Aplicacion() {
   return (
     <div className="min-h-dvh">
       <header className="sticky top-0 z-10 border-b border-borde/70 bg-crema/85 backdrop-blur">
-        <div className="mx-auto flex max-w-2xl items-center gap-3 px-4 py-3">
+        {/* En el celular la navegación vive abajo, así que acá arriba sobra
+            lugar a la derecha: se centra el título en vez de dejarlo colgado. */}
+        <div className="mx-auto flex max-w-2xl items-center justify-center gap-3 px-4 py-3 sm:justify-start">
           <Llama pose="cara" className="h-9 w-9 shrink-0" />
-          <div className="flex-1">
+          <div className="text-center sm:flex-1 sm:text-left">
             <h1 className="font-titulo text-lg leading-none text-tinta">Recetas de Llamachef</h1>
             {idsDespensa.size > 0 && (
               <p className="mt-0.5 text-xs text-tinta-suave">{idsDespensa.size} en la despensa</p>

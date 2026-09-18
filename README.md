@@ -40,6 +40,15 @@ Si falta una ilustración, esa pose cae en una llama dibujada en SVG dentro de
 `src/componentes/Llama.tsx`, que además respira, parpadea y mueve las orejas. O sea que la app
 funciona igual sin ninguna imagen.
 
+## Portadas de las recetas
+
+Cada receta tiene una portada. Si hay una foto en `public/recetas/<id>.webp` se usa esa; si no, se
+dibuja un fondo de color con el emoji de la receta, distinto según el momento del día. Por eso la
+app se ve completa sin ninguna foto, y se pueden ir subiendo de a una.
+
+Para agregar una: poné la foto en `disenio/recetas/` con el id de la receta como nombre y corré
+`python3 scripts/preparar-fotos.py`. El detalle está en `public/recetas/LEEME.md`.
+
 ## Estructura
 
 ```

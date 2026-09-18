@@ -14,6 +14,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'panqueques-sarraceno',
     nombre: 'Panqueques de sarraceno y banana',
+    emoji: '🥞',
     descripcion: 'Los panqueques de todos los días: salen finitos, se doblan bien y aguantan dulce o salado.',
     momentos: ['desayuno', 'dulce', 'merienda'],
     porciones: 2,
@@ -40,6 +41,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'revuelto-espinaca-hongos',
     nombre: 'Revuelto de huevo con espinaca y champiñones',
+    emoji: '🍳',
     descripcion: 'Desayuno salado de 10 minutos, con verdura adentro desde temprano.',
     momentos: ['desayuno', 'cena'],
     porciones: 2,
@@ -63,6 +65,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'porridge-coco-manzana',
     nombre: 'Porridge de coco y manzana',
+    emoji: '🥣',
     descripcion: 'La versión sin avena del desayuno caliente. Cremoso y dulce sin azúcar agregada.',
     momentos: ['desayuno', 'merienda'],
     porciones: 2,
@@ -85,6 +88,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'tortilla-zapallito',
     nombre: 'Tortilla de zapallito y cebolla de verdeo',
+    emoji: '🧆',
     descripcion: 'Rinde frío y caliente. Sirve de desayuno, de vianda o de cena liviana.',
     momentos: ['desayuno', 'almuerzo', 'cena'],
     porciones: 4,
@@ -111,6 +115,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'pollo-batatas-romero',
     nombre: 'Pollo al horno con batatas y romero',
+    emoji: '🍗',
     descripcion: 'Una asadera, todo junto al horno. El plato de cabecera cuando no hay tiempo ni ganas.',
     momentos: ['almuerzo', 'cena'],
     porciones: 4,
@@ -137,6 +142,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'salmon-esparragos',
     nombre: 'Salmón al horno con espárragos y limón',
+    emoji: '🐟',
     descripcion: 'Veinte minutos de principio a fin y una sola fuente para lavar.',
     momentos: ['almuerzo', 'cena'],
     porciones: 2,
@@ -161,6 +167,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'salteado-carne-brocoli',
     nombre: 'Salteado de carne con brócoli y jengibre',
+    emoji: '🥦',
     descripcion: 'El wok de la semana, sin salsa de soja pero con todo el sabor.',
     momentos: ['almuerzo', 'cena'],
     porciones: 3,
@@ -188,6 +195,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'guiso-pollo-zapallo',
     nombre: 'Guiso de pollo con zapallo y zanahoria',
+    emoji: '🍲',
     descripcion: 'Olla grande, comida para dos días. Levanta mejor al día siguiente.',
     momentos: ['almuerzo', 'cena'],
     porciones: 5,
@@ -217,6 +225,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'albondigas-pure-coliflor',
     nombre: 'Albóndigas con puré de coliflor',
+    emoji: '🍛',
     descripcion: 'Comfort food del protocolo: albóndigas jugosas sobre un puré bien cremoso.',
     momentos: ['almuerzo', 'cena'],
     porciones: 4,
@@ -245,6 +254,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'merluza-hinojo-naranja',
     nombre: 'Merluza con ensalada de hinojo y naranja',
+    emoji: '🍊',
     descripcion: 'Liviana y fresca. El hinojo crudo con naranja levanta cualquier pescado blanco.',
     momentos: ['almuerzo', 'cena'],
     porciones: 2,
@@ -269,6 +279,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'wok-camarones-repollo',
     nombre: 'Wok de camarones con repollo y jengibre',
+    emoji: '🦐',
     descripcion: 'Quince minutos reales. De la heladera a la mesa sin escalas.',
     momentos: ['almuerzo', 'cena'],
     porciones: 2,
@@ -295,6 +306,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'zapallitos-rellenos',
     nombre: 'Zapallitos rellenos de carne',
+    emoji: '🥒',
     descripcion: 'Plato de domingo. Se arman antes y van al horno cuando hace falta.',
     momentos: ['almuerzo', 'cena'],
     porciones: 4,
@@ -323,6 +335,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'sopa-zapallo-jengibre',
     nombre: 'Sopa crema de zapallo y jengibre',
+    emoji: '🎃',
     descripcion: 'Sedosa sin una gota de crema. Se congela perfecto en porciones.',
     momentos: ['almuerzo', 'cena'],
     porciones: 4,
@@ -349,6 +362,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'milanesas-pollo-mandioca',
     nombre: 'Milanesas de pollo con rebozado de mandioca y coco',
+    emoji: '🍖',
     descripcion: 'Crocantes de verdad, sin pan rallado. Al horno quedan mejor que fritas.',
     momentos: ['almuerzo', 'cena'],
     porciones: 4,
@@ -376,6 +390,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'pollo-coco-curcuma',
     nombre: 'Pollo al coco con cúrcuma y jengibre',
+    emoji: '🥥',
     descripcion: 'El sabor de un curry sin usar curry: la mezcla comercial tiene semillas y ají.',
     momentos: ['almuerzo', 'cena'],
     porciones: 4,
@@ -406,6 +421,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'hamburguesas-palta-chucrut',
     nombre: 'Hamburguesas con palta y chucrut',
+    emoji: '🍔',
     descripcion: 'Sin pan y sin extrañarlo: el chucrut hace el trabajo que hacía el pickle.',
     momentos: ['almuerzo', 'cena'],
     porciones: 4,
@@ -432,6 +448,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'estofado-carne-nabos',
     nombre: 'Estofado de carne con nabos y laurel',
+    emoji: '🥘',
     descripcion: 'Cocción larga y poco trabajo. Es la receta para un domingo de frío.',
     momentos: ['almuerzo', 'cena'],
     porciones: 5,
@@ -461,6 +478,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'higado-encebollado',
     nombre: 'Hígado encebollado',
+    emoji: '🧅',
     descripcion: 'El alimento más denso en nutrientes del protocolo. La clave es no pasarlo de cocción.',
     momentos: ['almuerzo', 'cena'],
     porciones: 3,
@@ -484,6 +502,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'fideos-zapallito-pesto',
     nombre: 'Fideos de zapallito con pesto de albahaca',
+    emoji: '🌿',
     descripcion: 'Pesto sin queso ni piñones, que igual sale cremoso gracias a la palta.',
     momentos: ['almuerzo', 'cena'],
     porciones: 2,
@@ -509,6 +528,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'bunuelos-acelga',
     nombre: 'Buñuelos de acelga',
+    emoji: '🥬',
     descripcion: 'Para usar el atado de acelga antes de que se ponga feo. Salen de la sartén y no llegan a la mesa.',
     momentos: ['snack', 'cena', 'merienda'],
     porciones: 4,
@@ -533,6 +553,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'ensalada-tibia-remolacha',
     nombre: 'Ensalada tibia de remolacha, rúcula y pollo',
+    emoji: '🥗',
     descripcion: 'Plato único que también funciona como vianda de oficina.',
     momentos: ['almuerzo'],
     porciones: 2,
@@ -558,6 +579,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'sardinas-pepino-eneldo',
     nombre: 'Sardinas con ensalada de pepino y eneldo',
+    emoji: '🥫',
     descripcion: 'Cinco minutos, cero cocción y una barbaridad de omega 3.',
     momentos: ['almuerzo', 'snack'],
     porciones: 2,
@@ -580,6 +602,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'tarta-sarraceno-verduras',
     nombre: 'Tarta de sarraceno con verduras',
+    emoji: '🥧',
     descripcion: 'Masa sin gluten que no se desarma. Rinde para la cena y la vianda del día siguiente.',
     momentos: ['almuerzo', 'cena'],
     porciones: 6,
@@ -611,6 +634,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'caldo-huesos-base',
     nombre: 'Caldo de huesos',
+    emoji: '🍵',
     descripcion: 'El básico del protocolo. Hacelo una vez y congelalo en porciones: mejora todo lo demás.',
     momentos: ['basico'],
     porciones: 8,
@@ -637,6 +661,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'pate-higado',
     nombre: 'Paté de hígado',
+    emoji: '🫙',
     descripcion: 'Para los que no quieren comer hígado. Untado en bastones de verdura, no se nota.',
     momentos: ['snack', 'basico'],
     porciones: 8,
@@ -662,6 +687,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'chips-batata',
     nombre: 'Chips de batata al horno',
+    emoji: '🍟',
     descripcion: 'El snack para tener siempre. Lo importante es cortarlas finas y no amontonarlas.',
     momentos: ['snack', 'merienda'],
     porciones: 4,
@@ -683,6 +709,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'crema-zanahoria-asada',
     nombre: 'Crema de zanahoria asada para untar',
+    emoji: '🥕',
     descripcion: 'Lo que reemplaza al hummus. Dulce, ahumada y espesa, sin garbanzos ni sésamo.',
     momentos: ['snack', 'basico', 'merienda'],
     porciones: 6,
@@ -708,6 +735,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'manzanas-horno-canela',
     nombre: 'Manzanas al horno con canela',
+    emoji: '🍎',
     descripcion: 'El postre más simple del protocolo, y el que mejor le queda a una cena pesada.',
     momentos: ['dulce', 'merienda'],
     porciones: 4,
@@ -731,6 +759,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'trufas-datil-coco',
     nombre: 'Trufas de dátil y coco',
+    emoji: '🍡',
     descripcion: 'Se hacen en 10 minutos sin horno y resuelven el antojo de la tarde.',
     momentos: ['dulce', 'snack', 'merienda'],
     porciones: 12,
@@ -753,6 +782,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'mousse-mango-coco',
     nombre: 'Mousse de mango y coco',
+    emoji: '🥭',
     descripcion: 'Tres ingredientes, textura de postre de restaurante.',
     momentos: ['dulce', 'merienda'],
     porciones: 4,
@@ -775,6 +805,7 @@ export const RECETAS: Receta[] = [
   {
     id: 'budin-banana-sarraceno',
     nombre: 'Budín de banana y sarraceno',
+    emoji: '🍌',
     descripcion: 'Húmedo por dentro, dorado por fuera. Aguanta cuatro días bien tapado.',
     momentos: ['dulce', 'desayuno', 'merienda'],
     porciones: 8,

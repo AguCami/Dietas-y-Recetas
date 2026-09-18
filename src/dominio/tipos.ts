@@ -128,6 +128,8 @@ export interface IngredienteDeReceta {
 export interface Receta {
   id: string
   nombre: string
+  /** Ícono de la portada cuando no hay foto subida. */
+  emoji: string
   descripcion: string
   momentos: Momento[]
   porciones: number

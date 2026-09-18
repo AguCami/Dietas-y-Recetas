@@ -6,6 +6,7 @@ import type { IngredienteEvaluado } from '../dominio/match'
 import { ETIQUETAS } from '../dominio/tipos'
 import { useDatos } from '../estado/contexto'
 import { Pildora, SelloAptitud, Tarjeta } from '../componentes/ui'
+import { Portada } from '../componentes/Portada'
 
 const NOMBRE_ETIQUETA = Object.fromEntries(ETIQUETAS.map((e) => [e.id, e.nombre]))
 
@@ -51,6 +52,12 @@ export function Receta({ id, onVolver }: { id: string; onVolver: () => void }) {
           {esFavorita ? '★ Guardada' : '☆ Guardar'}
         </button>
       </div>
+
+      <Portada
+        receta={receta}
+        className="aspect-[3/2] w-full rounded-3xl border border-borde"
+        tamanoEmoji="text-7xl"
+      />
 
       <header className="px-1">
         <div className="flex flex-wrap items-center gap-2">
