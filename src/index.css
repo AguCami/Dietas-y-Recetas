@@ -70,3 +70,102 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ───────────────────────────────────────────────────────────────
+   Llamachef: animaciones.
+   Todas son de reposo y lentas a propósito — tiene que sentirse viva
+   sin robarle atención a las recetas. La regla global de
+   prefers-reduced-motion de más arriba las desactiva solas.
+   ─────────────────────────────────────────────────────────────── */
+
+/* Para que cada parte rote sobre su propio centro y no sobre el del SVG. */
+.llama [class^='llama-'] {
+  transform-box: fill-box;
+}
+
+.llama-flotar {
+  transform-origin: center bottom;
+  animation: llama-flotar 4.5s ease-in-out infinite;
+}
+@keyframes llama-flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2.5px); }
+}
+
+/* Respiración: el cuerpo se ensancha un toque y baja apenas. */
+.llama-cuerpo {
+  transform-origin: center bottom;
+  animation: llama-respirar 4s ease-in-out infinite;
+}
+@keyframes llama-respirar {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(1.025, 0.99); }
+}
+
+.llama-cabeza {
+  transform-origin: center bottom;
+  animation: llama-asentir 7s ease-in-out infinite;
+}
+@keyframes llama-asentir {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-2.5deg); }
+  65% { transform: rotate(1.5deg); }
+}
+
+/* Parpadeo: casi todo el ciclo con el ojo abierto, un instante cerrado. */
+.llama-ojo {
+  transform-origin: center center;
+  animation: llama-parpadear 5.5s ease-in-out infinite;
+}
+@keyframes llama-parpadear {
+  0%, 93%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.08); }
+}
+
+.llama-oreja-izq,
+.llama-oreja-der {
+  transform-origin: center bottom;
+  animation: llama-oreja 7s ease-in-out infinite;
+}
+/* Desfasada, para que no muevan las dos orejas al mismo tiempo. */
+.llama-oreja-der {
+  animation-delay: 3.4s;
+}
+@keyframes llama-oreja {
+  0%, 86%, 100% { transform: rotate(0deg); }
+  90% { transform: rotate(-11deg); }
+  95% { transform: rotate(5deg); }
+}
+
+.llama-cola {
+  transform-origin: right center;
+  animation: llama-cola 3.2s ease-in-out infinite;
+}
+@keyframes llama-cola {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(9deg); }
+}
+
+.llama-zzz {
+  animation: llama-zzz 3s ease-out infinite;
+}
+.llama-zzz-2 { animation-delay: 1s; }
+.llama-zzz-3 { animation-delay: 2s; }
+@keyframes llama-zzz {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(7px, -20px) scale(1.15); }
+}
+
+/* Cuando la tocan. */
+.llama-salto {
+  transform-origin: center bottom;
+  animation: llama-salto 0.7s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+@keyframes llama-salto {
+  0% { transform: translateY(0) scaleY(1); }
+  18% { transform: translateY(0) scaleY(0.86); }
+  50% { transform: translateY(-15px) scaleY(1.07); }
+  78% { transform: translateY(0) scaleY(0.93); }
+  100% { transform: translateY(0) scaleY(1); }
+}

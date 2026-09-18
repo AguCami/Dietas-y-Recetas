@@ -24,7 +24,7 @@ genéricas en `src/datos/sustituciones.ts`. Si tenés un reemplazo válido en ca
 como cubierto.
 
 **Las sugerencias miran la hora.** A la mañana propone desayuno, al mediodía almuerzo, a la tarde
-merienda y a la noche cena. La llamita es solo la mascota: no anuncia la hora, únicamente cambia lo que
+merienda y a la noche cena. Llamachef, la mascota, no anuncia la hora: únicamente cambia lo que
 recomienda.
 
 ## Estructura

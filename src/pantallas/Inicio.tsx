@@ -10,7 +10,7 @@ import type { Humor } from '../componentes/Llama'
 import { BarraCobertura, SelloAptitud, Tarjeta } from '../componentes/ui'
 
 /** Cómo se llama la mascota. Una línea para cambiarlo. */
-const NOMBRE_MASCOTA = 'Llamita'
+const NOMBRE_MASCOTA = 'Llamachef'
 
 /** A la tarde y de trasnoche vale mirar también los dulces y los snacks. */
 const RELACIONADOS: Record<Momento, Momento[]> = {
@@ -68,7 +68,7 @@ export function Inicio({
     <div className="flex flex-col gap-5">
       <Tarjeta className="overflow-hidden">
         <div className="flex items-end gap-1 bg-gradient-to-b from-lila-100/60 to-transparent px-5 pt-5">
-          <Llama humor={humor} className="h-32 w-32 shrink-0 drop-shadow-sm" />
+          <Llama humor={humor} interactiva className="h-32 w-32 shrink-0 drop-shadow-sm" />
           <div className="relative mb-6 flex-1 rounded-2xl rounded-bl-sm border border-borde bg-papel px-4 py-3">
             <p className="text-xs font-bold tracking-wide text-tinta-suave uppercase">
               {NOMBRE_MASCOTA}
