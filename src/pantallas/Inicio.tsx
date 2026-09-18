@@ -75,9 +75,18 @@ export function Inicio({
   return (
     <div className="flex flex-col gap-5">
       <Tarjeta className="overflow-hidden">
-        <div className="flex items-end gap-1 bg-gradient-to-b from-lila-100/60 to-transparent px-5 pt-5">
-          <Llama pose={pose} interactiva className="h-32 w-24 shrink-0 drop-shadow-sm" />
-          <div className="relative mb-6 flex-1 rounded-2xl rounded-bl-sm border border-borde bg-papel px-4 py-3">
+        {/* En el celular van apilados: si comparten el ancho, la llama queda
+            chiquita y el texto se parte en cinco renglones. Desde `sm` hay
+            lugar de sobra y vuelven a ir lado a lado. */}
+        <div className="flex flex-col items-start gap-2 bg-gradient-to-b from-lila-100/60 to-transparent px-5 pt-5 sm:flex-row sm:items-end sm:gap-1">
+          <Llama
+            pose={pose}
+            interactiva
+            className="h-44 w-32 shrink-0 self-center drop-shadow-sm sm:h-32 sm:w-24 sm:self-auto"
+          />
+          {/* La esquina recta apunta a la llama: arriba cuando está apilado,
+              abajo a la izquierda cuando está al lado. */}
+          <div className="relative mb-4 w-full rounded-2xl rounded-tl-sm border border-borde bg-papel px-4 py-3 sm:mb-6 sm:w-auto sm:flex-1 sm:rounded-tl-2xl sm:rounded-bl-sm">
             <p className="text-xs font-bold tracking-wide text-tinta-suave uppercase">
               {NOMBRE_MASCOTA}
             </p>
