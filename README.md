@@ -27,14 +27,18 @@ como cubierto.
 merienda y a la noche cena. Llamachef, la mascota, no anuncia la hora: únicamente cambia lo que
 recomienda.
 
-## Cambiarle el dibujo a Llamachef
+## La mascota
 
-La mascota está dibujada en código (`src/componentes/Llama.tsx`), pero se puede reemplazar por
-ilustraciones propias sin tocar nada: alcanza con dejar los PNG en `public/llamachef/`
-(`feliz.png`, `pensando.png`, `dormida.png`). Si falta alguno, esa pose usa el dibujo de código,
-así que se pueden subir de a una.
+Llamachef se muestra con ilustraciones propias que viven en `public/llamachef/`. Hay una pose para
+cada situación: saluda si la despensa está vacía, festeja si podés cocinar algo sin comprar nada,
+explica si falta poco, y se confunde si no encontró nada.
 
-Los requisitos de formato están en `public/llamachef/LEEME.md`.
+Las originales están en `disenio/poses/` (no se publican) y los `.webp` que usa la app los genera
+`python3 scripts/preparar-poses.py`. El detalle está en `public/llamachef/LEEME.md`.
+
+Si falta una ilustración, esa pose cae en una llama dibujada en SVG dentro de
+`src/componentes/Llama.tsx`, que además respira, parpadea y mueve las orejas. O sea que la app
+funciona igual sin ninguna imagen.
 
 ## Estructura
 

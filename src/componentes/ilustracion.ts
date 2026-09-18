@@ -42,4 +42,4 @@ export function useIlustracion(url: string): EstadoIlustracion {
 }
 
 /** La URL respeta el `base` de Vite, que en GitHub Pages no es la raíz. */
-export const urlDePose = (pose: string) => `${import.meta.env.BASE_URL}llamachef/${pose}.png`
+export const urlDePose = (pose: string) => `${import.meta.env.BASE_URL}llamachef/${pose}.webp`

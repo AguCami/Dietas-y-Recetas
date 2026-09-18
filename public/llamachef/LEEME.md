@@ -1,32 +1,52 @@
 # Ilustraciones de Llamachef
 
-Dejá acá los PNG de la mascota. La app los levanta sola: no hay que tocar código.
+**Los archivos `.webp` de esta carpeta se generan solos. No los edites a mano.**
 
-## Archivos que busca
+Las originales viven en `disenio/poses/` y de ahí sale todo lo de acá, con:
 
-| Nombre exacto    | Cuándo se muestra                                  |
-| ---------------- | -------------------------------------------------- |
-| `feliz.png`      | Por defecto, y en el encabezado de toda la app      |
-| `pensando.png`   | Cuando la despensa está vacía o no hay receta lista |
-| `dormida.png`    | Disponible, todavía no está enganchada a nada       |
+```bash
+python3 scripts/preparar-poses.py
+```
 
-**Si falta alguno, no pasa nada**: esa pose usa la llama dibujada en código
-(`src/componentes/Llama.tsx`). Podés subir de a una y ver cómo queda.
+## Qué hace ese script
 
-## Formato
+Las imágenes salen del generador en 1024×1024 y pesan medio mega cada una: 3,3 MB
+en total, demasiado para abrir en el celular con datos. El script las recorta,
+las achica a lo que la app muestra de verdad y las guarda en WebP. Quedan en
+unos 200 KB en total, sin diferencia visible.
 
-- PNG con **fondo transparente** (canal alfa). No JPG, no fondo blanco.
+Recorta todas con **una sola caja común**, no con la de cada imagen. Si cada pose
+se recortara a su propio contenido, las que tienen un brazo levantado quedarían a
+otra escala y la llama pegaría un salto al cambiar de pose.
+
+También genera `cara.webp`, un recorte de la cabeza a partir de `reposo.png`: de
+cuerpo entero, en el encabezado, la cabeza queda de unos 10 px y no se entiende nada.
+
+## Cuándo se usa cada pose
+
+| Pose         | Cuándo aparece                                     |
+| ------------ | -------------------------------------------------- |
+| `cara`       | En el encabezado de toda la app                     |
+| `saludo`     | Inicio, cuando la despensa está vacía               |
+| `feliz`      | Inicio, cuando podés cocinar algo sin comprar nada  |
+| `hablando`   | Inicio, cuando falta poco para alguna receta        |
+| `confundida` | Inicio, cuando no encontró nada para ese momento    |
+| `pensando`   | Mientras carga la app                               |
+| `reposo`     | Por defecto, si no se pide otra                     |
+
+## Para agregar o cambiar una pose
+
+1. Subí el PNG a `disenio/poses/` con el nombre de la pose.
+2. Corré el script.
+3. Si es una pose nueva, hay que sumarla al tipo `Pose` en `src/componentes/Llama.tsx`
+   y decidir cuándo se muestra.
+
+Si falta alguna ilustración, esa pose cae en la llama dibujada en código
+(`src/componentes/Llama.tsx`), así que nada se rompe.
+
+## Formato de las originales
+
+- PNG con **fondo transparente**. No JPG, no fondo blanco.
 - Cuadrado, 1024×1024.
 - **Mismo encuadre en todas**: mismo tamaño y misma posición del cuerpo.
-  Si el cuerpo se mueve entre poses, al cambiar de humor pega un salto.
-- Tiene que leerse a 36 px, que es el tamaño del encabezado: formas simples
-  y grandes, sin detalles finos.
-
-## Paleta
-
-```
-lana        #FFFAF4 → #F2DFCC      contorno    #E0CBB5
-rosa        #F0B0B8               lila         #C3B5E4
-salvia      #C2D9BA               durazno      #F3C193
-ojos        #4A423C               fondo app    #FDF8F3
-```
+- Que se lea a 36 px: formas simples y grandes, sin detalles finos.

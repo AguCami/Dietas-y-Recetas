@@ -35,7 +35,7 @@ function Aplicacion() {
   if (cargando) {
     return (
       <div className="flex min-h-dvh items-center justify-center">
-        <Llama humor="pensando" className="h-24 w-24 animate-pulse" />
+        <Llama pose="pensando" className="h-24 w-24 animate-pulse" />
       </div>
     )
   }
@@ -44,12 +44,12 @@ function Aplicacion() {
     <div className="min-h-dvh">
       <header className="sticky top-0 z-10 border-b border-borde/70 bg-crema/85 backdrop-blur">
         <div className="mx-auto flex max-w-2xl items-center gap-3 px-4 py-3">
-          <Llama humor="feliz" className="h-9 w-9 shrink-0" />
+          <Llama pose="cara" className="h-9 w-9 shrink-0" />
           <div className="flex-1">
-            <h1 className="font-titulo text-lg leading-none text-tinta">Dietas y Recetas</h1>
-            <p className="mt-0.5 text-xs text-tinta-suave">
-              {idsDespensa.size > 0 ? `${idsDespensa.size} en la despensa` : 'Cocina sin vueltas'}
-            </p>
+            <h1 className="font-titulo text-lg leading-none text-tinta">Recetas de Llamachef</h1>
+            {idsDespensa.size > 0 && (
+              <p className="mt-0.5 text-xs text-tinta-suave">{idsDespensa.size} en la despensa</p>
+            )}
           </div>
 
           {/* En escritorio hay lugar para la navegación arriba. */}

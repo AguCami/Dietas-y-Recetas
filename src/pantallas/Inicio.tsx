@@ -6,7 +6,7 @@ import { franjaActual } from '../dominio/horario'
 import type { Momento } from '../dominio/tipos'
 import { useDatos } from '../estado/contexto'
 import { Llama } from '../componentes/Llama'
-import type { Humor } from '../componentes/Llama'
+import type { Pose } from '../componentes/Llama'
 import { BarraCobertura, SelloAptitud, Tarjeta } from '../componentes/ui'
 
 /** Cómo se llama la mascota. Una línea para cambiarlo. */
@@ -54,7 +54,15 @@ export function Inicio({
   const listas = sugeridas.filter((s) => s.cobertura === 1)
   const despensaVacia = idsDespensa.size === 0
 
-  const humor: Humor = despensaVacia ? 'pensando' : listas.length > 0 ? 'feliz' : 'pensando'
+  // Cada situación tiene su pose: saluda si no sabe nada, festeja si podés
+  // cocinar ya, explica si falta poco, y se confunde si no encontró nada.
+  const pose: Pose = despensaVacia
+    ? 'saludo'
+    : listas.length > 0
+      ? 'feliz'
+      : sugeridas.length > 0
+        ? 'hablando'
+        : 'confundida'
 
   const mensaje = despensaVacia
     ? 'Todavía no sé qué hay en casa. Contame qué tenemos y te digo qué cocinar.'
@@ -68,7 +76,7 @@ export function Inicio({
     <div className="flex flex-col gap-5">
       <Tarjeta className="overflow-hidden">
         <div className="flex items-end gap-1 bg-gradient-to-b from-lila-100/60 to-transparent px-5 pt-5">
-          <Llama humor={humor} interactiva className="h-32 w-32 shrink-0 drop-shadow-sm" />
+          <Llama pose={pose} interactiva className="h-32 w-24 shrink-0 drop-shadow-sm" />
           <div className="relative mb-6 flex-1 rounded-2xl rounded-bl-sm border border-borde bg-papel px-4 py-3">
             <p className="text-xs font-bold tracking-wide text-tinta-suave uppercase">
               {NOMBRE_MASCOTA}

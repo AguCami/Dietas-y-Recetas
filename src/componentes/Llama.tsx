@@ -11,16 +11,33 @@ import { urlDePose, useIlustracion } from './ilustracion'
  * propósito: respira, parpadea, mueve las orejas y la cola. Tiene que sentirse
  * viva de reojo, no pedir atención.
  */
-export type Humor = 'feliz' | 'pensando' | 'dormida'
+
+/** Las ilustraciones disponibles en `public/llamachef/`. */
+export type Pose = 'reposo' | 'feliz' | 'saludo' | 'hablando' | 'pensando' | 'confundida' | 'cara'
+
+/** Expresiones del dibujo de respaldo, que tiene menos variedad que las poses. */
+type Humor = 'feliz' | 'pensando'
+
+/** A qué expresión del dibujo cae cada pose cuando no hay ilustración. */
+const HUMOR_DE_RESPALDO: Record<Pose, Humor> = {
+  reposo: 'feliz',
+  feliz: 'feliz',
+  saludo: 'feliz',
+  cara: 'feliz',
+  hablando: 'pensando',
+  pensando: 'pensando',
+  confundida: 'pensando',
+}
 
 interface Props {
-  humor?: Humor
+  pose?: Pose
   className?: string
   /** Si es true, se le puede tocar y pega un saltito. */
   interactiva?: boolean
 }
 
-export function Llama({ humor = 'feliz', className = '', interactiva = false }: Props) {
+export function Llama({ pose = 'reposo', className = '', interactiva = false }: Props) {
+  const humor = HUMOR_DE_RESPALDO[pose]
   const [saltando, setSaltando] = useState(false)
   const temporizador = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
@@ -145,13 +162,7 @@ export function Llama({ humor = 'feliz', className = '', interactiva = false }: 
           />
 
           {/* Ojos */}
-          {humor === 'dormida' ? (
-            <g stroke="#4A423C" strokeWidth="2.8" fill="none" strokeLinecap="round">
-              <path d="M83 46 q6 6 12 0" />
-              <path d="M105 46 q6 6 12 0" />
-            </g>
-          ) : (
-            <>
+          <>
               <g className="llama-ojo">
                 <ellipse cx="89" cy="46" rx="4.2" ry="4.6" fill="#4A423C" />
                 <circle cx="90.6" cy="44.4" r="1.5" fill="#FFF" />
@@ -167,8 +178,7 @@ export function Llama({ humor = 'feliz', className = '', interactiva = false }: 
                 strokeWidth="1.8"
                 strokeLinecap="round"
               />
-            </>
-          )}
+          </>
 
           {/* Cachetes */}
           <ellipse cx="77" cy="57" rx="6.5" ry="4.5" fill="var(--color-rosa-300)" opacity="0.5" />
@@ -182,15 +192,6 @@ export function Llama({ humor = 'feliz', className = '', interactiva = false }: 
             <circle r="1.8" fill="var(--color-durazno-300)" />
           </g>
         </g>
-
-        {/* Dormida: los zzz suben en fila */}
-        {humor === 'dormida' && (
-          <g fill="var(--color-lila-300)" fontWeight="bold" fontSize="15">
-            <text className="llama-zzz" x="134" y="34">z</text>
-            <text className="llama-zzz llama-zzz-2" x="143" y="27">z</text>
-            <text className="llama-zzz llama-zzz-3" x="153" y="20">z</text>
-          </g>
-        )}
 
         {/* Pensando: los puntitos de "está por decir algo" */}
         {humor === 'pensando' && (
@@ -207,7 +208,7 @@ export function Llama({ humor = 'feliz', className = '', interactiva = false }: 
 
   // Si hay una ilustración subida a public/llamachef/, gana sobre el dibujo.
   // Mientras se comprueba mostramos el dibujo, así nunca hay un hueco vacío.
-  const url = urlDePose(humor)
+  const url = urlDePose(pose)
   const ilustracion = useIlustracion(url)
 
   const contenido =
