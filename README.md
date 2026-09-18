@@ -27,6 +27,15 @@ como cubierto.
 merienda y a la noche cena. Llamachef, la mascota, no anuncia la hora: únicamente cambia lo que
 recomienda.
 
+## Cambiarle el dibujo a Llamachef
+
+La mascota está dibujada en código (`src/componentes/Llama.tsx`), pero se puede reemplazar por
+ilustraciones propias sin tocar nada: alcanza con dejar los PNG en `public/llamachef/`
+(`feliz.png`, `pensando.png`, `dormida.png`). Si falta alguno, esa pose usa el dibujo de código,
+así que se pueden subir de a una.
+
+Los requisitos de formato están en `public/llamachef/LEEME.md`.
+
 ## Estructura
 
 ```

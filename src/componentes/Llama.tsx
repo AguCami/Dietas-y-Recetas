@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { urlDePose, useIlustracion } from './ilustracion'
 
 /**
  * La mascota de la app.
@@ -204,10 +205,26 @@ export function Llama({ humor = 'feliz', className = '', interactiva = false }: 
     </svg>
   )
 
+  // Si hay una ilustración subida a public/llamachef/, gana sobre el dibujo.
+  // Mientras se comprueba mostramos el dibujo, así nunca hay un hueco vacío.
+  const url = urlDePose(humor)
+  const ilustracion = useIlustracion(url)
+
+  const contenido =
+    ilustracion === 'existe' ? (
+      <img
+        src={url}
+        alt=""
+        className={`h-full w-full object-contain ${saltando ? 'llama-salto' : 'llama-flotar'}`}
+      />
+    ) : (
+      dibujo
+    )
+
   if (!interactiva) {
     return (
       <div className={`llama ${className}`} role="img" aria-label="Llamachef, la asistente de cocina">
-        {dibujo}
+        {contenido}
       </div>
     )
   }
@@ -219,7 +236,7 @@ export function Llama({ humor = 'feliz', className = '', interactiva = false }: 
       className={`llama cursor-pointer ${className}`}
       aria-label="Llamachef, la asistente de cocina. Tocala para saludarla."
     >
-      {dibujo}
+      {contenido}
     </button>
   )
 }
