@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { ETIQUETAS } from '../dominio/tipos'
 import type { Estado, Etiqueta } from '../dominio/tipos'
 import { INGREDIENTES, INGREDIENTE_POR_ID } from '../datos/ingredientes'
-import { coincide } from '../dominio/texto'
+import { coincide, porRelevancia } from '../dominio/texto'
 import { useDatos } from '../estado/contexto'
 import { Pildora, Tarjeta } from '../componentes/ui'
 
@@ -33,7 +33,9 @@ export function Perfil() {
         !perfil.excepciones[i.id] &&
         i.etiquetas.some((e) => perfil.reglas[e] === 'excluido') &&
         coincide(consulta, i.nombre, ...(i.alias ?? [])),
-    ).slice(0, 10)
+    )
+      .sort(porRelevancia(consulta))
+      .slice(0, 10)
   }, [consulta, perfil])
 
   return (

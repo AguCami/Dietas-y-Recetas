@@ -129,7 +129,7 @@ export const INGREDIENTES: Ingrediente[] = [
   ing('ciboulette', 'Ciboulette', 'hierba'),
 
   // ─── Condimentos ───────────────────────────────────────────────────────
-  ing('sal', 'Sal marina', 'condimento'),
+  ing('sal', 'Sal', 'condimento', [], ['sal marina', 'sal común', 'sal fina', 'sal gruesa', 'sal de mesa', 'sal entrefina', 'sal rosada']),
   ing('curcuma', 'Cúrcuma', 'condimento'),
   ing('jengibre', 'Jengibre', 'condimento'),
   ing('canela', 'Canela', 'condimento'),

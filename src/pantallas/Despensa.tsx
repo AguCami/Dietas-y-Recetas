@@ -3,7 +3,7 @@ import { CATEGORIAS, ETIQUETAS } from '../dominio/tipos'
 import type { Categoria } from '../dominio/tipos'
 import { INGREDIENTES, INGREDIENTE_POR_ID } from '../datos/ingredientes'
 import { evaluar } from '../dominio/perfil'
-import { coincide } from '../dominio/texto'
+import { coincide, porRelevancia } from '../dominio/texto'
 import { useDatos } from '../estado/contexto'
 import { Pildora, Tarjeta, Vacio } from '../componentes/ui'
 
@@ -18,7 +18,9 @@ export function Despensa() {
     if (!consulta.trim()) return []
     return INGREDIENTES.filter(
       (i) => !idsDespensa.has(i.id) && coincide(consulta, i.nombre, ...(i.alias ?? [])),
-    ).slice(0, 12)
+    )
+      .sort(porRelevancia(consulta))
+      .slice(0, 12)
   }, [consulta, idsDespensa])
 
   // La despensa agrupada por categoría, para que se lea como la heladera.
