@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+
+/*
+ * Paleta pastel. Todo el color de la app sale de acá: si querés cambiarle
+ * el humor, tocá estos valores y se actualiza entera.
+ */
+@theme {
+  --color-crema: #fdf8f3;
+  --color-papel: #fffdfb;
+  --color-borde: #ece2d8;
+
+  --color-tinta: #4a423c;
+  --color-tinta-suave: #8a7d72;
+
+  --color-salvia-50: #f0f5ee;
+  --color-salvia-100: #dfeada;
+  --color-salvia-200: #c2d9ba;
+  --color-salvia-400: #8fb384;
+  --color-salvia-600: #5f8455;
+  --color-salvia-700: #4a6842;
+
+  --color-durazno-50: #fdf1e7;
+  --color-durazno-100: #fbe3cf;
+  --color-durazno-300: #f3c193;
+  --color-durazno-600: #b9702c;
+
+  --color-rosa-50: #fdeef0;
+  --color-rosa-100: #fadde1;
+  --color-rosa-300: #f0b0b8;
+  --color-rosa-600: #b05566;
+
+  --color-lila-100: #e8e2f5;
+  --color-lila-300: #c3b5e4;
+  --color-lila-600: #6f5fa0;
+
+  --font-titulo: 'Fraunces', Georgia, serif;
+  --font-cuerpo: 'Nunito', system-ui, sans-serif;
+}
+
+html {
+  background: var(--color-crema);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-cuerpo);
+  color: var(--color-tinta);
+  background: var(--color-crema);
+  -webkit-font-smoothing: antialiased;
+  /* Respeta el notch y la barra inferior del celular. */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Barra de scroll discreta, para que no rompa el aire de la interfaz. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-borde);
+  border-radius: 999px;
+  border: 3px solid var(--color-crema);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
